@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="preload" as="image" href="imagens/paz.jpg">
+    <link rel="preload" as="image" href="imagens/volte quando quiser.jpg">
+    <link rel="preload" as="image" href="imagens/Comfort.png">
+    <link rel="preload" as="image" href="imagens/I luv cats.png">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Terapia</title>
+
+
+    <style>
+
+        :root {
+
+            --cor-texto: rgb(0, 0, 0);
+
+            --cor-botao-sim: #4CAF50;
+            --cor-botao-nao: #F44336;
+            --cor-botao-enviar: #4285F4;
+            --cor-botao-voltar: #4CAF50;
+
+            --cor-texto-botao: white;
+            --cor-campo: #eeeeee;
+
+        }
+
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+
+        html,
+        body {
+            
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+
+            color: var(--cor-texto);
+
+        }
+
+
+
+
+        #inicio,
+        #telaNao,
+        #consulta,
+        #mensagemFinal {
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+        }
+
+
+
+        #inicio {
+
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+
+
+            background-image: url("imagens/paz.jpg");
+
+        }
+        
+
+        #tituloInicio {
+            font-size: 40px;
+            margin: 0 0 40px 0;
+
+            color: white;
+            -webkit-text-stroke: 2px black;
+        }
+
+
+        .botoesInicio {
+
+            display: flex;
+
+            gap: 20px;
+
+        }
+
+
+
+
+        #telaNao {
+
+            display: none;
+
+            width: 100%;
+            height: 100vh;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+
+
+            background-image: url("imagens/volte quando quiser.jpg");
+
+        }
+
+
+        #mensagemNao {
+
+            font-size: 40px;
+
+            font-weight: bold;
+
+            margin: 0 0 40px 0;
+
+            color: white;
+
+            -webkit-text-stroke: 2px black;
+
+        }
+
+
+
+        #consulta {
+
+            display: none;
+
+            position: relative;
+
+            width: 100%;
+            height: 100vh;
+
+
+
+            background-image: url("imagens/Comfort.png");
+
+        }
+
+
+
+
+        #pergunta {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 30%;
+
+            transform: translate(-50%, -50%);
+
+            width: 80%;
+
+            text-align: center;
+
+            font-size: 36px;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .botoes {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 55%;
+
+            transform: translate(-50%, -50%);
+
+            display: flex;
+
+            gap: 20px;
+
+        }
+
+
+        #respostaTexto {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 68%;
+
+            transform: translate(-50%, -50%);
+
+            width: 500px;
+
+            max-width: 80%;
+
+            padding: 15px;
+
+            border: 2px solid black;
+
+            border-radius: 0;
+
+            background: var(--cor-campo);
+
+            color: black;
+
+            font-size: 17px;
+
+            outline: none;
+
+        }
+
+
+        #respostaTexto:focus {
+
+            border: 2px solid var(--cor-botao-enviar);
+
+        }
+
+
+
+        #enviar {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 78%;
+
+            transform: translate(-50%, -50%);
+
+            background: var(--cor-botao-enviar);
+
+        }
+
+
+
+        button {
+
+            padding: 15px 30px;
+
+            border: none;
+
+            border-radius: 0;
+
+            color: var(--cor-texto-botao);
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        button:hover {
+
+            transform: scale(1.05);
+
+        }
+
+
+
+        .sim {
+
+            background: var(--cor-botao-sim);
+
+        }
+
+
+        .nao {
+
+            background: var(--cor-botao-nao);
+
+        }
+
+
+        .voltar {
+
+            background: var(--cor-botao-voltar);
+
+        }
+
+
+
+        #mensagemFinal {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            background-image: url("imagens/I luv cats.png");
+
+            color: rgb(88, 77, 184);
+            -webkit-text-stroke: 2px rgb(0, 0, 0);
+        }
+
+
+
+        @media (max-width: 600px) {
+
+
+            #tituloInicio {
+
+                font-size: 28px;
+
+                padding: 20px;
+
+            }
+
+
+            #mensagemNao {
+
+                font-size: 40px;
+
+                font-weight: bold;
+
+                margin: 0 0 40px 0;
+
+            }
+
+
+            #pergunta {
+
+                font-size: 25px;
+
+                width: 90%;
+
+            }
+
+
+            .botoes {
+
+                gap: 10px;
+
+            }
+
+
+            button {
+
+                padding: 12px 20px;
+
+                font-size: 15px;
+
+            }
+
+
+            #respostaTexto {
+
+                width: 85%;
+
+                font-size: 15px;
+
+            }
+
+
+            #mensagemFinal {
+
+                font-size: 28px;
+
+                padding: 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+    <audio id="musica" loop>
+
+        <source src="musicas/hi...again...mp3" type="audio/mpeg">
+
+    </audio>
+
+
+
+    <section id="inicio">
+
+        
+        <h1 id="tituloInicio">
+
+            Você deseja participar da consulta?
+
+        </h1>
+
+
+        <div class="botoesInicio">
+
+
+            <button
+                class="sim"
+                onclick="comecarConsulta()">
+
+                SIM
+
+            </button>
+
+
+            <button
+                class="nao"
+                onclick="recusarConsulta()">
+
+                NÃO
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <section id="telaNao">
+
+
+        <div id="mensagemNao">
+
+            Espero que esteja tudo bem, volte quando quiser, sempre estarei aqui :)
+
+        </div>
+
+
+        <button
+            class="voltar"
+            onclick="voltarInicio()">
+
+            Err... na vdd...
+
+        </button>
+
+
+    </section>
+
+
+
+    <section id="consulta">
+
+
+        <div id="pergunta"></div>
+
+
+        <div class="botoes">
+
+
+            <button
+                class="sim"
+                onclick="responderSim()">
+
+                SIM
+
+            </button>
+
+
+            <button
+                class="nao"
+                onclick="responderNao()">
+
+                NÃO
+
+            </button>
+
+
+        </div>
+
+
+        <input
+            type="text"
+            id="respostaTexto"
+            placeholder="Digite sua resposta..."
+        >
+
+        <button
+            id="enviar"
+            onclick="enviarTexto()">
+
+            ENVIAR RESPOSTA
+
+        </button>
+
+
+    </section>
+
+
+
+
+    <section id="mensagemFinal">
+
+        Obrigado por participar da consulta!
+
+    </section>
+
+
+    <script>
+
+
+
+
+        const ACCESS_KEY =
+            "f7d95e6d-f169-46de-89ba-9191e2c95bbd";
+
+
+
+
+        const perguntas = [
+
+
+            {
+                texto: "Olá! me chamo Eivor, Qual o seu nome?"
+            },
+
+
+            {
+                texto: "Ah, sim, conheço você muito bem. Vamos conversar, ok?"
+            },
+
+
+            {
+                texto: "Você gosta de música certo? Quem não gosta né? O que você mais gosta de escutar quando se sente assim? :)"
+            },
+
+
+            {
+                texto: "Interessante. Sabe, nós temos muito em comum, eu sempre sonhei em tocar em uma banda! Quais são seus sonhos neste mundo?"
+            },
+
+
+            {
+                texto: "São incriveis assim como você :)"
+            },
+
+            {
+                texto: "Como foi seu dia?"
+            },
+
+            {
+                texto: "Sonhador?"
+            },
+
+
+            {
+                texto: "Você odeia alguém? Por que?"
+            },
+
+
+            {
+                texto: "Sabe... as pessoas são complexas, você também é. Cheio de sentimentos, sonhos e claro conflitos. Tente ser diferente de tudo que você odeia"
+            },
+
+
+            {
+                texto: "Claro que consegue :) Eu sei que consegue se você tentar. Você é mais do que pensa."
+            },
+
+
+            {
+                texto: "Você acredita que pode amar? Assim como amo você?"
+            },
+
+
+            {
+                texto: "Por que você está assim meu bem, Sorria :) Eu estou aqui"
+            },
+
+
+            {
+                texto: "Estude muito, se esforce muito, trabalhe muito, descanse muito"
+            },
+
+
+            {
+                texto: "Eu te amo"
+            },
+
+
+            {
+                texto: "Senti saudades de você :) você sente saudade de algo?"
+            },
+
+
+            {
+                texto: "Olhe ao seu redor, respire... este é o mundo se conectando com você, você está vivo."
+            },
+
+
+            {
+                texto: "Olhe tudo que você tem. Tudo que escolheu te amar Seu pai, sua mãe, sua vó, até seu cachorro. Não deixe isso te abalar :)"
+            },
+
+
+            {
+                texto: "Como você se sente agora?"
+            },
+
+
+            {
+                texto: "Você gostou da consulta?"
+            },
+
+            {
+                texto: "Espere, tenho um presente para você ^-^ ou achou que eu não havia preparado nada? hahaha"
+            }
+
+
+        ];
+
+
+
+        let perguntaAtual = 0;
+
+        let respostas = [];
+
+
+
+
+        const inicio =
+            document.getElementById("inicio");
+
+
+        const telaNao =
+            document.getElementById("telaNao");
+
+
+        const consulta =
+            document.getElementById("consulta");
+
+
+        const pergunta =
+            document.getElementById("pergunta");
+
+
+        const respostaTexto =
+            document.getElementById("respostaTexto");
+
+
+        const mensagemFinal =
+            document.getElementById("mensagemFinal");
+
+
+        const musica =
+            document.getElementById("musica");
+
+
+
+
+        function comecarConsulta() {
+
+
+            inicio.style.display = "none";
+
+
+            telaNao.style.display = "none";
+
+
+            mensagemFinal.style.display = "none";
+
+
+            consulta.style.display = "block";
+
+
+            /* Começa a música */
+
+            musica.currentTime = 0;
+
+
+            musica.play().catch(function(erro) {
+
+                console.log(
+
+                    "A música foi bloqueada pelo navegador:",
+
+                    erro
+
+                );
+
+            });
+
+
+
+            perguntaAtual = 0;
+
+
+            respostas = [];
+
+
+            mostrarPergunta();
+
+        }
+
+
+  
+
+        function recusarConsulta() {
+
+
+
+            musica.pause();
+
+            musica.currentTime = 0;
+
+
+
+            inicio.style.display = "none";
+
+            consulta.style.display = "none";
+
+            mensagemFinal.style.display = "none";
+
+
+
+            telaNao.style.display = "flex";
+
+        }
+
+
+
+
+        function voltarInicio() {
+
+
+
+            musica.pause();
+
+            musica.currentTime = 0;
+
+
+
+            telaNao.style.display = "none";
+
+            consulta.style.display = "none";
+
+            mensagemFinal.style.display = "none";
+
+
+
+            inicio.style.display = "flex";
+
+        }
+
+        function mostrarPergunta() {
+
+
+            if (perguntaAtual >= perguntas.length) {
+
+
+                finalizarConsulta();
+
+
+                return;
+
+            }
+
+
+            pergunta.innerText =
+
+                perguntas[perguntaAtual].texto;
+
+
+            respostaTexto.value = "";
+
+        }
+
+
+
+
+        function responderSim() {
+
+
+            registrarResposta("SIM");
+
+
+            proximaPergunta();
+
+        }
+
+
+
+
+        function responderNao() {
+
+
+            registrarResposta("NÃO");
+
+
+            proximaPergunta();
+
+        }
+
+
+
+
+        function enviarTexto() {
+
+
+            const resposta =
+
+                respostaTexto.value.trim();
+
+
+            if (resposta === "") {
+
+
+                alert(
+
+                    "Digite uma resposta antes de enviar."
+
+                );
+
+
+                return;
+
+            }
+
+
+            registrarResposta(resposta);
+
+
+            proximaPergunta();
+
+        }
+
+
+
+
+        function registrarResposta(resposta) {
+
+
+            respostas.push({
+
+
+                pergunta:
+
+                    perguntas[perguntaAtual].texto,
+
+
+                resposta:
+
+                    resposta
+
+
+            });
+
+        }
+
+
+
+        function proximaPergunta() {
+
+
+            perguntaAtual++;
+
+
+            mostrarPergunta();
+
+        }
+
+
+
+
+        function finalizarConsulta() {
+
+            consulta.style.display = "none";
+
+            mensagemFinal.innerText =
+                "Tadann! Gatos. Sei que você ama gatos ^-^. Obrigado por ter compartilhado esses momentos comigo, eu sei como é... se alguns momentos vc quiser chorar, chore, afinal o que te diferenciaria de um simples objeto? Saiba que você também encontrará felicidade. E talvez compratilhar isso com alguém :). Enfim, meu bem, faça o que você ama e principalmente ame quem também te ama, se agarre nisso. Te vejo na próxima, meu amor. Sempre estarei quando precisar :)";
+
+            mensagemFinal.style.display = "flex";
+
+
+            enviarRespostas();
+
+        }
+
+
+
+
+        function criarMensagem() {
+
+
+            let mensagem =
+
+                "NOVA RESPOSTA DA CONSULTA\n\n";
+
+
+            respostas.forEach(function(item, index) {
+
+
+                mensagem +=
+
+                    (index + 1) +
+
+                    ". " +
+
+                    item.pergunta +
+
+                    "\n";
+
+
+                mensagem +=
+
+                    "Resposta: " +
+
+                    item.resposta +
+
+                    "\n\n";
+
+
+            });
+
+
+            return mensagem;
+
+        }
+
+
+
+        async function enviarRespostas() {
+
+
+            try {
+
+
+                const resposta =
+
+                    await fetch(
+
+                        "https://api.web3forms.com/submit",
+
+                        {
+
+
+                            method: "POST",
+
+
+                            headers: {
+
+
+                                "Content-Type":
+
+                                    "application/json",
+
+
+                                "Accept":
+
+                                    "application/json"
+
+
+                            },
+
+
+                            body: JSON.stringify({
+
+
+                                access_key:
+
+                                    ACCESS_KEY,
+
+
+                                subject:
+
+                                    "Nova resposta da Consulta",
+
+
+                                from_name:
+
+                                    "Consulta",
+
+
+                                message:
+
+                                    criarMensagem()
+
+
+                            })
+
+
+                        }
+
+                    );
+
+
+                const resultado =
+
+                    await resposta.json();
+
+
+                if (resultado.success) {
+
+
+                    console.log(
+
+                        "Respostas enviadas com sucesso!"
+
+                    );
+
+
+                } else {
+
+
+                    console.error(
+
+                        "Erro ao enviar:",
+
+                        resultado
+
+                    );
+
+                }
+
+
+            } catch (erro) {
+
+
+                console.error(
+
+                    "Erro de conexão:",
+
+                    erro
+
+                );
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
