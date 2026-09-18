@@ -2,17 +2,17 @@
 <html lang="pt-BR">
 
 <head>
+
     <link rel="preload" as="image" href="imagens/paz.jpg">
     <link rel="preload" as="image" href="imagens/volte quando quiser.jpg">
     <link rel="preload" as="image" href="imagens/Comfort.png">
     <link rel="preload" as="image" href="imagens/I luv cats.png">
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Terapia</title>
-
 
     <style>
 
@@ -40,7 +40,7 @@
 
         html,
         body {
-            
+
             margin: 0;
             padding: 0;
 
@@ -56,8 +56,6 @@
         }
 
 
-
-
         #inicio,
         #telaNao,
         #consulta,
@@ -70,7 +68,6 @@
             background-repeat: no-repeat;
 
         }
-
 
 
         #inicio {
@@ -88,19 +85,21 @@
 
             text-align: center;
 
-
-
             background-image: url("imagens/paz.jpg");
 
         }
-        
+
 
         #tituloInicio {
+
             font-size: 40px;
+
             margin: 0 0 40px 0;
 
             color: white;
+
             -webkit-text-stroke: 2px black;
+
         }
 
 
@@ -111,8 +110,6 @@
             gap: 20px;
 
         }
-
-
 
 
         #telaNao {
@@ -129,8 +126,6 @@
             align-items: center;
 
             text-align: center;
-
-
 
             background-image: url("imagens/volte quando quiser.jpg");
 
@@ -152,7 +147,6 @@
         }
 
 
-
         #consulta {
 
             display: none;
@@ -162,13 +156,9 @@
             width: 100%;
             height: 100vh;
 
-
-
             background-image: url("imagens/Comfort.png");
 
         }
-
-
 
 
         #pergunta {
@@ -189,8 +179,40 @@
 
             font-weight: bold;
 
+            z-index: 2;
+
         }
 
+
+        #imagemEspecial {
+
+            display: none;
+
+            position: absolute;
+
+            left: 30%;
+
+            top: 30%;
+
+            transform: translate(-50%, -50%);
+
+            width: 30px;
+
+            height: 30px;
+
+            max-width: 60%;
+
+            object-fit: contain;
+
+            z-index: 4;
+
+            pointer-events: auto;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+        }
 
 
         .botoes {
@@ -206,6 +228,8 @@
             display: flex;
 
             gap: 20px;
+
+            z-index: 3;
 
         }
 
@@ -238,6 +262,8 @@
 
             outline: none;
 
+            z-index: 3;
+
         }
 
 
@@ -246,7 +272,6 @@
             border: 2px solid var(--cor-botao-enviar);
 
         }
-
 
 
         #enviar {
@@ -261,8 +286,9 @@
 
             background: var(--cor-botao-enviar);
 
-        }
+            z-index: 3;
 
+        }
 
 
         button {
@@ -293,7 +319,6 @@
         }
 
 
-
         .sim {
 
             background: var(--cor-botao-sim);
@@ -315,22 +340,30 @@
         }
 
 
-
         #mensagemFinal {
+
             display: none;
+
             width: 100%;
             height: 100vh;
+
             justify-content: center;
+
             align-items: center;
+
             text-align: center;
+
             font-size: 40px;
+
             font-weight: bold;
+
             background-image: url("imagens/I luv cats.png");
 
             color: rgb(88, 77, 184);
-            -webkit-text-stroke: 2px rgb(0, 0, 0);
-        }
 
+            -webkit-text-stroke: 2px rgb(0, 0, 0);
+
+        }
 
 
         @media (max-width: 600px) {
@@ -398,6 +431,17 @@
 
             }
 
+
+            #imagemEspecial {
+
+                width: 220px;
+
+                height: 220px;
+
+                max-width: 60%;
+
+            }
+
         }
 
     </style>
@@ -406,7 +450,6 @@
 
 
 <body>
-
 
 
     <audio id="musica" loop>
@@ -419,7 +462,6 @@
 
     <section id="inicio">
 
-        
         <h1 id="tituloInicio">
 
             Você deseja participar da consulta?
@@ -428,7 +470,6 @@
 
 
         <div class="botoesInicio">
-
 
             <button
                 class="sim"
@@ -447,16 +488,12 @@
 
             </button>
 
-
         </div>
 
     </section>
 
 
-
-
     <section id="telaNao">
-
 
         <div id="mensagemNao">
 
@@ -473,7 +510,6 @@
 
         </button>
 
-
     </section>
 
 
@@ -484,8 +520,14 @@
         <div id="pergunta"></div>
 
 
-        <div class="botoes">
+        <img
+            id="imagemEspecial"
+            src="imagens/1.jpg"
+            alt=""
+            onclick="trocarFundo()">
 
+
+        <div class="botoes">
 
             <button
                 class="sim"
@@ -504,15 +546,14 @@
 
             </button>
 
-
         </div>
 
 
         <input
             type="text"
             id="respostaTexto"
-            placeholder="Digite sua resposta..."
-        >
+            placeholder="Digite sua resposta...">
+
 
         <button
             id="enviar"
@@ -526,8 +567,6 @@
     </section>
 
 
-
-
     <section id="mensagemFinal">
 
         Obrigado por participar da consulta!
@@ -538,12 +577,8 @@
     <script>
 
 
-
-
         const ACCESS_KEY =
             "f7d95e6d-f169-46de-89ba-9191e2c95bbd";
-
-
 
 
         const perguntas = [
@@ -573,12 +608,14 @@
                 texto: "São incriveis assim como você :)"
             },
 
+
             {
                 texto: "Como foi seu dia?"
             },
 
+
             {
-                texto: "Sonhador?"
+                texto: "Ícaro?"
             },
 
 
@@ -641,20 +678,17 @@
                 texto: "Você gostou da consulta?"
             },
 
+
             {
                 texto: "Espere, tenho um presente para você ^-^ ou achou que eu não havia preparado nada? hahaha"
             }
 
-
         ];
-
 
 
         let perguntaAtual = 0;
 
         let respostas = [];
-
-
 
 
         const inicio =
@@ -685,6 +719,9 @@
             document.getElementById("musica");
 
 
+        const imagemEspecial =
+            document.getElementById("imagemEspecial");
+
 
 
         function comecarConsulta() {
@@ -692,17 +729,18 @@
 
             inicio.style.display = "none";
 
-
             telaNao.style.display = "none";
 
-
             mensagemFinal.style.display = "none";
-
 
             consulta.style.display = "block";
 
 
-            /* Começa a música */
+
+
+            consulta.style.backgroundImage =
+                'url("imagens/Comfort.png")';
+
 
             musica.currentTime = 0;
 
@@ -720,9 +758,7 @@
             });
 
 
-
             perguntaAtual = 0;
-
 
             respostas = [];
 
@@ -732,16 +768,12 @@
         }
 
 
-  
-
         function recusarConsulta() {
-
 
 
             musica.pause();
 
             musica.currentTime = 0;
-
 
 
             inicio.style.display = "none";
@@ -751,22 +783,18 @@
             mensagemFinal.style.display = "none";
 
 
-
             telaNao.style.display = "flex";
 
         }
 
 
 
-
         function voltarInicio() {
-
 
 
             musica.pause();
 
             musica.currentTime = 0;
-
 
 
             telaNao.style.display = "none";
@@ -776,19 +804,18 @@
             mensagemFinal.style.display = "none";
 
 
-
             inicio.style.display = "flex";
 
         }
+
+
 
         function mostrarPergunta() {
 
 
             if (perguntaAtual >= perguntas.length) {
 
-
                 finalizarConsulta();
-
 
                 return;
 
@@ -796,28 +823,48 @@
 
 
             pergunta.innerText =
-
                 perguntas[perguntaAtual].texto;
 
 
             respostaTexto.value = "";
 
+
+            imagemEspecial.style.display = "none";
+
+
+            
+            if (
+                perguntas[perguntaAtual].texto ===
+                "Ícaro?"
+            ) {
+
+                imagemEspecial.style.display = "block";
+
+            }
+
         }
 
 
 
+        function trocarFundo() {
+
+
+            consulta.style.backgroundImage =
+                'url("imagens/1.jpg")';
+
+
+            imagemEspecial.style.display = "none";
+
+        }
 
         function responderSim() {
 
 
             registrarResposta("SIM");
 
-
             proximaPergunta();
 
         }
-
-
 
 
         function responderNao() {
@@ -825,11 +872,9 @@
 
             registrarResposta("NÃO");
 
-
             proximaPergunta();
 
         }
-
 
 
 
@@ -837,7 +882,6 @@
 
 
             const resposta =
-
                 respostaTexto.value.trim();
 
 
@@ -845,9 +889,7 @@
 
 
                 alert(
-
                     "Digite uma resposta antes de enviar."
-
                 );
 
 
@@ -858,12 +900,9 @@
 
             registrarResposta(resposta);
 
-
             proximaPergunta();
 
         }
-
-
 
 
         function registrarResposta(resposta) {
@@ -871,21 +910,15 @@
 
             respostas.push({
 
-
                 pergunta:
-
                     perguntas[perguntaAtual].texto,
 
-
                 resposta:
-
                     resposta
-
 
             });
 
         }
-
 
 
         function proximaPergunta() {
@@ -893,20 +926,22 @@
 
             perguntaAtual++;
 
-
             mostrarPergunta();
 
         }
 
 
 
-
         function finalizarConsulta() {
+
 
             consulta.style.display = "none";
 
+
             mensagemFinal.innerText =
+
                 "Tadann! Gatos. Sei que você ama gatos ^-^. Obrigado por ter compartilhado esses momentos comigo, eu sei como é... se alguns momentos vc quiser chorar, chore, afinal o que te diferenciaria de um simples objeto? Saiba que você também encontrará felicidade. E talvez compratilhar isso com alguém :). Enfim, meu bem, faça o que você ama e principalmente ame quem também te ama, se agarre nisso. Te vejo na próxima, meu amor. Sempre estarei quando precisar :)";
+
 
             mensagemFinal.style.display = "flex";
 
@@ -916,13 +951,10 @@
         }
 
 
-
-
         function criarMensagem() {
 
 
             let mensagem =
-
                 "NOVA RESPOSTA DA CONSULTA\n\n";
 
 
@@ -948,14 +980,12 @@
 
                     "\n\n";
 
-
             });
 
 
             return mensagem;
 
         }
-
 
 
         async function enviarRespostas() {
@@ -972,51 +1002,33 @@
 
                         {
 
-
                             method: "POST",
-
 
                             headers: {
 
-
                                 "Content-Type":
-
                                     "application/json",
 
-
                                 "Accept":
-
                                     "application/json"
-
 
                             },
 
-
                             body: JSON.stringify({
 
-
                                 access_key:
-
                                     ACCESS_KEY,
 
-
                                 subject:
-
                                     "Nova resposta da Consulta",
 
-
                                 from_name:
-
                                     "Consulta",
 
-
                                 message:
-
                                     criarMensagem()
 
-
                             })
-
 
                         }
 
@@ -1024,7 +1036,6 @@
 
 
                 const resultado =
-
                     await resposta.json();
 
 
@@ -1032,9 +1043,7 @@
 
 
                     console.log(
-
                         "Respostas enviadas com sucesso!"
-
                     );
 
 
@@ -1042,11 +1051,8 @@
 
 
                     console.error(
-
                         "Erro ao enviar:",
-
                         resultado
-
                     );
 
                 }
@@ -1056,11 +1062,8 @@
 
 
                 console.error(
-
                     "Erro de conexão:",
-
                     erro
-
                 );
 
             }
